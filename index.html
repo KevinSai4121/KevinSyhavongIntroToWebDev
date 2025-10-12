@@ -1,17 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kevin's Practice Site</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; text-align: center; }
-    h1 { color: #2c3e50; }
-    p { color: #34495e; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home – Evolution of the Web</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <h1>Welcome to My Practice Site!</h1>
-  <p>Hosted via GitHub Pages — excited to learn web development!</p>
+  <div class="page">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="index.html">Evolution of the Web: From Web 1.0 to Web 3.0</a>
+      <ul role="list" class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topic1.html">The Birth of the World Wide Web</a></li>
+        <li><a href="topic2.html">From Social Web to Web 3.0</a></li>
+        <li><a href="key-concepts.html">Key Concepts</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <header class="hero-section">
+        <h1>Evolution of the Web: From Web 1.0 to Web 3.0</h1>
+        <p class="abstract">
+          This site explores how the Web evolved from static documents (Web 1.0) to user-generated content and social platforms (Web 2.0),
+          and toward decentralized, programmable networks (Web 3.0). You’ll learn key milestones, technologies, and concepts.
+        </p>
+        <img src="img/hero-web-evolution.png" alt="Illustration: Evolution of the Web" class="hero" />
+      </header>
+
+      <section aria-labelledby="key-terms">
+        <h2 id="key-terms">Key Terms</h2>
+        <ul class="key-terms">
+          <li><strong>HTTP:</strong> Application protocol for hypertext, enabling web communication.</li>
+          <li><strong>HTML:</strong> Markup language for structuring web content.</li>
+          <li><strong>Decentralization:</strong> Shifting data/compute/control away from centralized platforms.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="toc">
+        <h2 id="toc">Table of Contents</h2>
+        <ol class="toc">
+          <li><a href="topic1.html">The Birth of the World Wide Web (Web 1.0 Era)</a></li>
+          <li><a href="topic2.html">From Social Web to Web 3.0: The Internet Evolves</a></li>
+          <li><a href="key-concepts.html">Key Concepts & Glossary</a></li>
+          <li><a href="references.html">References & Learning Resources</a></li>
+          <li><a href="about.html">About the Author & Project</a></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>This is a class project for IT 3203. See the class website at 
+        <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">
+          https://ksuweb.github.io/IT3203/
+        </a>.
+      </p>
+    </footer>
+  </div>
 </body>
 </html>
