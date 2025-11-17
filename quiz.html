@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Self-Assessment Quiz – Evolution of the Web</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page">
+    <nav class="site-nav" aria-label="Primary">
+      <a class="brand" href="index.html">Evolution of the Web: From Web 1.0 to Web 3.0</a>
+      <ul role="list" class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topic1.html">The Birth of the World Wide Web</a></li>
+        <li><a href="topic2.html">From Social Web to Web 3.0</a></li>
+        <li><a href="key-concepts.html">Key Concepts</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="quiz.html" aria-current="page">Self-Assessment Quiz</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <article class="quiz-article">
+        <header class="quiz-header">
+          <h1>Self-Assessment Quiz: Evolution of the Web</h1>
+          <p class="quiz-intro">
+            Test your understanding of how the web evolved from Web 1.0 to Web 3.0 after reading the
+            pages on this site. Answer all questions, then click <strong>Check Answers</strong>.
+          </p>
+          <p class="quiz-meta">
+            This quiz includes one short-answer question, three single-choice questions, and one multi-select question.
+          </p>
+        </header>
+
+        <form id="quiz-form" class="quiz-form" novalidate>
+          <!-- Q1 – fill-in-the-blank -->
+          <fieldset class="quiz-question">
+            <legend>1. Short answer – Web pioneer</legend>
+            <p>Who invented the World Wide Web?</p>
+            <label for="q1" class="visually-hidden">Your answer for Question 1</label>
+            <input id="q1" name="q1" type="text" autocomplete="off" required />
+          </fieldset>
+
+          <!-- Q2 – single choice -->
+          <fieldset class="quiz-question">
+            <legend>2. Web 1.0 characteristics</legend>
+            <p>Which statement best describes the <strong>Web 1.0</strong> era?</p>
+            <label class="option">
+              <input type="radio" name="q2" value="a" />
+              Mostly user-generated content with social media platforms.
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="b" />
+              Mostly static, read-only pages published by organizations.
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="c" />
+              Fully decentralized applications based on blockchains.
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" value="d" />
+              Virtual reality and 3D web experiences.
+            </label>
+          </fieldset>
+
+          <!-- Q3 – single choice -->
+          <fieldset class="quiz-question">
+            <legend>3. Web 2.0 interaction</legend>
+            <p>What made <strong>Web 2.0</strong> different from Web 1.0?</p>
+            <label class="option">
+              <input type="radio" name="q3" value="a" />
+              Web browsers could only display text and no images.
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="b" />
+              Users could comment, share, and create content on platforms like blogs and social networks.
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="c" />
+              The web was only accessible to universities and governments.
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" value="d" />
+              All websites became offline desktop apps.
+            </label>
+          </fieldset>
+
+          <!-- Q4 – single choice -->
+          <fieldset class="quiz-question">
+            <legend>4. Web 3.0 focus</legend>
+            <p>Which of the following is a key goal of <strong>Web 3.0</strong>?</p>
+            <label class="option">
+              <input type="radio" name="q4" value="a" />
+              Making every website use only HTML tables for layout.
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="b" />
+              Increasing central control by a few large platforms.
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="c" />
+              Decentralizing data and ownership using technologies such as blockchains and smart contracts.
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" value="d" />
+              Limiting the web to desktop devices only.
+            </label>
+          </fieldset>
+
+          <!-- Q5 – multi-selection -->
+          <fieldset class="quiz-question">
+            <legend>5. Multi-select – Web 3.0 technologies</legend>
+            <p>
+              Which of the following are commonly associated with <strong>Web 3.0</strong>?<br />
+              <em>Select all that apply.</em>
+            </p>
+            <label class="option">
+              <input type="checkbox" name="q5" value="a" />
+              Blockchain-based networks
+            </label>
+            <label class="option">
+              <input type="checkbox" name="q5" value="b" />
+              Dial-up modems and static HTML only
+            </label>
+            <label class="option">
+              <input type="checkbox" name="q5" value="c" />
+              Smart contracts
+            </label>
+            <label class="option">
+              <input type="checkbox" name="q5" value="d" />
+              Decentralized applications (dApps)
+            </label>
+          </fieldset>
+
+          <div class="quiz-actions">
+            <button type="submit" class="btn primary">Check Answers</button>
+            <button type="button" id="reset-btn" class="btn secondary">Reset Quiz</button>
+          </div>
+        </form>
+
+        <section id="results" class="quiz-results" aria-live="polite"></section>
+      </article>
+    </main>
+
+    <footer>
+      <p>This is a class project for IT 3203. See the class website at
+        <a href="https://ksuweb.github.io/IT3203/" target="_blank" rel="noopener">https://ksuweb.github.io/IT3203/</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    // IT 3203 Milestone 2 – Quiz logic
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("quiz-form");
+      const resultsContainer = document.getElementById("results");
+      const resetBtn = document.getElementById("reset-btn");
+
+      const TOTAL_QUESTIONS = 5;
+      const PASSING_SCORE = 4; // 4 out of 5 = pass
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let score = 0;
+        const feedback = [];
+
+        // Q1 – short answer (Tim Berners-Lee)
+        const q1Input = document.getElementById("q1");
+        const q1Value = q1Input.value.trim();
+        let q1Correct = false;
+        if (q1Value) {
+          const normalized = q1Value.toLowerCase();
+          if (normalized.includes("berners") && normalized.includes("lee")) {
+            q1Correct = true;
+            score++;
+          }
+        }
+        feedback.push({
+          question: "1. Who invented the World Wide Web?",
+          correct: q1Correct,
+          userAnswer: q1Value || "(no answer)",
+          correctAnswer: "Tim Berners-Lee"
+        });
+
+        // Q2 – single choice
+        const q2Selected = document.querySelector('input[name="q2"]:checked');
+        const q2Value = q2Selected ? q2Selected.value : "";
+        const q2Correct = q2Value === "b";
+        if (q2Correct) score++;
+        feedback.push({
+          question: "2. Web 1.0 characteristics",
+          correct: q2Correct,
+          userAnswer: q2Selected ? q2Selected.nextSibling.textContent.trim() : "(no answer)",
+          correctAnswer: "Mostly static, read-only pages published by organizations."
+        });
+
+        // Q3 – single choice
+        const q3Selected = document.querySelector('input[name="q3"]:checked');
+        const q3Value = q3Selected ? q3Selected.value : "";
+        const q3Correct = q3Value === "b";
+        if (q3Correct) score++;
+        feedback.push({
+          question: "3. Web 2.0 interaction",
+          correct: q3Correct,
+          userAnswer: q3Selected ? q3Selected.nextSibling.textContent.trim() : "(no answer)",
+          correctAnswer: "Users could comment, share, and create content on social platforms."
+        });
+
+        // Q4 – single choice
+        const q4Selected = document.querySelector('input[name="q4"]:checked');
+        const q4Value = q4Selected ? q4Selected.value : "";
+        const q4Correct = q4Value === "c";
+        if (q4Correct) score++;
+        feedback.push({
+          question: "4. Web 3.0 focus",
+          correct: q4Correct,
+          userAnswer: q4Selected ? q4Selected.nextSibling.textContent.trim() : "(no answer)",
+          correctAnswer: "Decentralizing data and ownership using technologies such as blockchains and smart contracts."
+        });
+
+        // Q5 – multi-select
+        const q5Checked = Array.from(document.querySelectorAll('input[name="q5"]:checked')).map(
+          (input) => input.value
+        );
+        const correctQ5 = ["a", "c", "d"];
+        const q5Correct = setsEqual(q5Checked, correctQ5);
+        if (q5Correct) score++;
+        feedback.push({
+          question: "5. Multi-select – Web 3.0 technologies",
+          correct: q5Correct,
+          userAnswer: q5Checked.length
+            ? q5Checked.map((v) => labelForQ5(v)).join(", ")
+            : "(no answer)",
+          correctAnswer: "Blockchain-based networks; Smart contracts; Decentralized applications (dApps)."
+        });
+
+        const passed = score >= PASSING_SCORE;
+
+        // Build result HTML
+        const summaryHtml = `
+          <section class="results-summary">
+            <h2>Quiz Results</h2>
+            <p class="overall ${passed ? "result-pass" : "result-fail"}">
+              ${passed ? "Pass ✅" : "Try again ❌"} – You scored
+              <strong>${score} / ${TOTAL_QUESTIONS}</strong>.
+            </p>
+            <p class="score-note">
+              Passing score is ${PASSING_SCORE} out of ${TOTAL_QUESTIONS}.
+            </p>
+          </section>
+        `;
+
+        const detailsHtml = `
+          <section class="results-details">
+            <h3>Question Breakdown</h3>
+            <ol class="results-list">
+              ${feedback
+                .map((item) => {
+                  const statusClass = item.correct ? "correct" : "incorrect";
+                  const statusLabel = item.correct ? "Correct" : "Incorrect";
+                  return `
+                    <li class="result-item">
+                      <h4>${item.question}</h4>
+                      <p class="${statusClass}">
+                        <strong>${statusLabel}</strong>
+                      </p>
+                      <p><strong>Your answer:</strong> ${escapeHtml(item.userAnswer)}</p>
+                      <p><strong>Correct answer:</strong> ${escapeHtml(item.correctAnswer)}</p>
+                    </li>
+                  `;
+                })
+                .join("")}
+            </ol>
+          </section>
+        `;
+
+        resultsContainer.innerHTML = summaryHtml + detailsHtml;
+        resultsContainer.scrollIntoView({ behavior: "smooth" });
+      });
+
+      resetBtn.addEventListener("click", () => {
+        form.reset();
+        resultsContainer.innerHTML = "";
+      });
+
+      // Helper: compare two arrays as sets
+      function setsEqual(a, b) {
+        if (a.length !== b.length) return false;
+        const sortedA = [...a].sort();
+        const sortedB = [...b].sort();
+        return sortedA.every((val, idx) => val === sortedB[idx]);
+      }
+
+      // Helper: map q5 values to human-readable labels
+      function labelForQ5(value) {
+        switch (value) {
+          case "a":
+            return "Blockchain-based networks";
+          case "b":
+            return "Dial-up modems and static HTML only";
+          case "c":
+            return "Smart contracts";
+          case "d":
+            return "Decentralized applications (dApps)";
+          default:
+            return value;
+        }
+      }
+
+      // Very small HTML escape to avoid issues when printing answers
+      function escapeHtml(text) {
+        return String(text)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+    });
+  </script>
+</body>
+</html>
