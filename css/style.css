@@ -1,4 +1,7 @@
-/* IT 3203 Milestone 1 – Single CSS for all pages */
+/* IT 3203 – Milestones 1–3
+   Shared CSS for all pages */
+
+/* === Global theme variables (colors, spacing, layout width) === */
 :root {
   --max: 1100px;
   --brand: #0d6efd;
@@ -9,6 +12,7 @@
 }
 * { box-sizing: border-box; }
 
+/* === Base typography and page background === */
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
@@ -17,6 +21,14 @@ body {
   color: var(--text);
 }
 
+/* Milestone 3 – Responsive Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Overall page grid layout (header, main, footer) === */
 .page {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -61,6 +73,7 @@ a:hover {
   transform: translateY(-1px);
 }
 
+/* === Main content container (centers page content) === */
 .content {
   max-width: var(--max);
   width: 100%;
@@ -68,6 +81,7 @@ a:hover {
   padding: 0 1rem;
 }
 
+/* === Hero image on the home page === */
 .hero {
   display: block;
   width: 100%;
@@ -78,6 +92,7 @@ a:hover {
 
 .hero-section .abstract { color: var(--muted); }
 
+/* === Highlighted takeaway callout on topic pages === */
 #highlight {
   background: #fff8e1;
   border-left: 4px solid #ffca28;
@@ -85,6 +100,7 @@ a:hover {
   border-radius: 6px;
 }
 
+/* === Table styling for comparisons (e.g., Web 1.0 vs modern web) === */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -99,6 +115,7 @@ th, td {
   text-align: left;
 }
 
+/* === Figure and caption styling for images === */
 figure {
   margin: 1.25rem 0;
   padding: 1rem;
@@ -112,6 +129,7 @@ figcaption {
   margin-top: 0.5rem;
 }
 
+/* === Site footer styling === */
 footer {
   border-top: 1px solid #e5e7eb;
   background: var(--card);
@@ -120,9 +138,7 @@ footer {
   color: var(--muted);
 }
 
-@media (max-width: 720px) {
-  .site-nav .menu { flex-wrap: wrap; }
-}
+
 
 /* Quiz styles – Milestone 2 */
 .quiz-article {
@@ -398,8 +414,61 @@ footer {
 }
 
 
+/* Milestone 3 – Responsive Design */
+
+/* Medium screens (tablets, small laptops) */
 @media (max-width: 720px) {
+  /* Content spacing adapts */
+  .content {
+    margin: 1rem auto;
+    padding: 0 0.75rem;
+  }
+
+  /* === Top navigation bar (brand + menu links) === */
+  .site-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .site-nav .menu {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 0.35rem;
+  }
+
+  /* Table cells shrink slightly */
+  th, td {
+    padding: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  /* Quiz container adjusts spacing */
   .quiz-article {
     padding: 1.25rem 1rem;
   }
 }
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  /* Menu becomes vertical */
+  .site-nav .menu {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .site-nav .menu li {
+    width: 100%;
+  }
+
+  .site-nav .menu a {
+    display: block;
+    width: 100%;
+  }
+
+  /* Hero images scale full width */
+  .hero {
+    max-width: 100%;
+  }
+}
+
